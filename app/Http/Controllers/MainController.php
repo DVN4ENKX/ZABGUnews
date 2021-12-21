@@ -36,7 +36,7 @@ class MainController extends Controller
     {
         $news = new News;
         $search = $request->search;
-        return view('home', ['news' => $news->where('article', 'LIKE',"%{$search}%")->orderBy('id', 'desc')->get()]);
+        return view('home', ['news' => $news->where('article', 'LIKE',"%{$search}%")->orwhere('text', 'LIKE',"%{$search}%")->orderBy('id', 'desc')->get()]);
     }
 
     public function adminredpost(Request $request, $id)
